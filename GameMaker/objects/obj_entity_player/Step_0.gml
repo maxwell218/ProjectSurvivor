@@ -1,6 +1,7 @@
 /// @description Inputs & States
-EXIT_IF_FPS_NOT_SUPPORTED;
 event_inherited();
+
+EXIT_IF_FPS_NOT_SUPPORTED;
 
 #region Get Inputs
 
