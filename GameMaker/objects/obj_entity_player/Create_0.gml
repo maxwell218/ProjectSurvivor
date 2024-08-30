@@ -1,6 +1,8 @@
 /// @description Initialize Player Variables
 event_inherited();
 
+x = 100;
+y = 100;
 entity_health = 10;
 entity_max_health = 10;
 entity_damage_on_touch = 0;
@@ -26,13 +28,20 @@ h_speed = 0;
 v_speed = 0;
 grav = 0.5;
 
-image_angle = 0;
-
 jump_buffer = 10; // Frames after leaving ground when we can still jump
 jump_speed = -8; // Jump height, more negative = higher
 on_ground = true;
 
 accel = .4;
-decel = .2;
+decel = .1;
+
+#endregion
+
+#region Functions
+
+function change_state(_new_state) {
+	entity_inner_state = INNER_STATE.ENTER;
+	entity_state = _new_state;
+}
 
 #endregion

@@ -1,5 +1,8 @@
 /// @description Inputs & States
+EXIT_IF_FPS_NOT_SUPPORTED;
 event_inherited();
+
+#region Get Inputs
 
 key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
 key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
@@ -8,6 +11,8 @@ key_down = keyboard_check(vk_down) || keyboard_check(ord("S"));
 
 key_jump = keyboard_check_pressed(vk_space);
 key_jump_held = keyboard_check(vk_space);
+
+#endregion
 
 #region Player States
 
@@ -31,8 +36,7 @@ switch(entity_state) {
 
 			// Transition to Moving State if moving horizontally
 			if ((key_left || key_right || key_up || key_down) || (h_speed != 0 || v_speed != 0)) {
-				entity_inner_state = INNER_STATE.ENTER;
-			    entity_state = ENTITY_STATE.MOVING;
+				change_state(ENTITY_STATE.MOVING);
 			}
 		}
         
@@ -63,8 +67,7 @@ switch(entity_state) {
         
 		    // Transition to Idle State if not moving horizontally
 			if ((!key_left && !key_right && !key_up && !key_down) && (h_speed == 0 && v_speed == 0)) {
-				entity_inner_state = INNER_STATE.ENTER;
-		        entity_state = ENTITY_STATE.IDLE;
+				change_state(ENTITY_STATE.IDLE);
 		    }
 		}
 
@@ -87,8 +90,7 @@ switch(entity_state) {
 
 		    // Transition to Idle State if not jumping
 		    if (on_ground) {
-				entity_inner_state = INNER_STATE.ENTER;
-		        entity_state = ENTITY_STATE.IDLE;
+				change_state(ENTITY_STATE.IDLE);
 		    }
 		}
 
@@ -137,7 +139,7 @@ var _move_y = 0;
 
 // Get Length
 if (_input_x != 0 || _input_y != 0) {
-	
+
     // Calculate Direction 
 	var _dir = point_direction(0, 0, _input_x, _input_y);
 	
@@ -145,16 +147,21 @@ if (_input_x != 0 || _input_y != 0) {
     h_speed += lengthdir_x(accel, _dir) * DELTA;
     v_speed += lengthdir_y(accel, _dir) * DELTA;
 	
-} else {
-	
-	// Apply Decel
+} 
+
+// Apply Decel
+if (_input_x == 0) {
 	if (h_speed > 0) h_speed -= decel; else if (h_speed < 0) h_speed += decel;
-	if (v_speed > 0) v_speed -= decel; else if (v_speed < 0) v_speed += decel;
-	
-	// Stop If Low Speed
-	if (abs(h_speed) < decel) h_speed = 0;
-	if (abs(v_speed) < decel) v_speed = 0;
 }
+	
+if (_input_y == 0) {
+	if (v_speed > 0) v_speed -= decel; else if (v_speed < 0) v_speed += decel;
+}
+	
+// Stop If Low Speed
+if (abs(h_speed) < decel) h_speed = 0;
+if (abs(v_speed) < decel) v_speed = 0;
+
 
 // Clamp Speed
 var _speed = point_distance(0, 0, h_speed, v_speed);
@@ -164,9 +171,11 @@ if (_speed > max_speed) {
 	v_speed = lengthdir_y(max_speed, _dir) * DELTA;
 }
 
-// Apply Speed
-x += h_speed;
-y += v_speed;
+#endregion
+
+#region Collisions
+
+scr_move_and_collide();
 
 #endregion
 

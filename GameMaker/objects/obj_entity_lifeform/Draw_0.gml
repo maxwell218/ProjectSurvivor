@@ -1,9 +1,9 @@
 /// @description 
 
-var _xx = floor(x + 0.5);
-var _yy = floor(y + 0.5);
+var _xx = floor(x + .5);
+var _yy = floor(y + .5);
 
-draw_sprite_ext(sprite_index, 0, _xx, _yy + bounce_y, image_xscale, image_yscale, image_angle, c_white, 1);
+draw_sprite_ext(sprite_index, 0, _xx, _yy - bounce, image_xscale, image_yscale, rotation_angle, c_white, 1);
 
 if (global.debug) {
 	
@@ -23,12 +23,12 @@ if (global.debug) {
 	
 	// Draw speed and position
 	draw_set_halign(fa_left);
-	draw_text(bbox_left, y, h_speed);
-	draw_text(bbox_left, y + 16, v_speed);
+	draw_text(bbox_left, y, "hspd: " + string(h_speed));
+	draw_text(bbox_left, y + 16, "vspd: " + string(v_speed));
 	
-	// draw_text(bbox_left, y + 32, x);
-	// draw_text(bbox_left, y + 48, y);
-	draw_text(bbox_left, y + 32, image_angle);
-	draw_text(bbox_left, y + 48, percent);
-	draw_text(bbox_left, y + 64, position);
+	draw_text(bbox_left, y + 32, x);
+	draw_text(bbox_left, y + 48, y);
+	// draw_text(bbox_left, y + 32, image_angle);
+	// draw_text(bbox_left, y + 48, percent);
+	// draw_text(bbox_left, y + 64, position);
 }

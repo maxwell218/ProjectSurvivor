@@ -17,13 +17,22 @@ entity_inner_state = INNER_STATE.ENTER;
 
 healthbar_height = 3;
 healthbar_y_offset = 5;
+h_speed = 0;
+v_speed = 0;
+
+// x_frac = 0;
+// y_frac = 0;
 
 // Animation
 rotation_curve = animcurve_get_channel(ac_rotation, "curve1");
-return_speed = .1;
-percent = 0;
-position = 0;
-bounce_y = 0;
+rotation_angle = 0;
+rotation_return_speed = .25;
+rotation_percent = 0;
+
+bounce_curve = animcurve_get_channel(ac_bounce, "curve1");
+bounce = 0;
+bounce_percent = 0;
+bounce_return_speed = .25;
 
 
 
