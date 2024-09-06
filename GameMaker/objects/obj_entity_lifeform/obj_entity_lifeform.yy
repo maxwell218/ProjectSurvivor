@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Entity",
-    "path": "folders/Objects/Entity.yy",
+    "name": "Entities",
+    "path": "folders/Objects/Entities.yy",
   },
   "parentObjectId": null,
   "persistent": false,

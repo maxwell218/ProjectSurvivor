@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Projectile",
-    "path": "folders/Objects/Entity/Projectile.yy",
+    "name": "Projectiles",
+    "path": "folders/Objects/Entities/Projectiles.yy",
   },
   "parentObjectId": null,
   "persistent": false,

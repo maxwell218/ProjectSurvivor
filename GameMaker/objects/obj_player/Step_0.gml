@@ -179,24 +179,3 @@ if (_speed > max_speed) {
 scr_move_and_collide();
 
 #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

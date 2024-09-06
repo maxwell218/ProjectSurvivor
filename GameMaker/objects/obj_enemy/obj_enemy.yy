@@ -1,13 +1,13 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_entity_enemy",
+  "name": "obj_enemy",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
     "name": "Enemy",
-    "path": "folders/Objects/Entity/Enemy.yy",
+    "path": "folders/Objects/Entities/Enemy.yy",
   },
   "parentObjectId": {
     "name": "obj_entity_lifeform",

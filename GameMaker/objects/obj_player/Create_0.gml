@@ -1,8 +1,15 @@
 /// @description Initialize Player Variables
 event_inherited();
 
-x = 100;
-y = 100;
+enum CHARACTER_STATS {
+	STR,
+	DEX,
+	CONS,
+	INT,
+	WIS,
+	CHA,
+}
+
 entity_health = 10;
 entity_max_health = 10;
 entity_damage_on_touch = 0;

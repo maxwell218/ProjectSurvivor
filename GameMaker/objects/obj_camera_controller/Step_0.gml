@@ -1,4 +1,4 @@
-/// @description 
+/// @description Follow Player
 EXIT_IF_FPS_NOT_SUPPORTED;
 
 if (instance_exists(follow)) {
